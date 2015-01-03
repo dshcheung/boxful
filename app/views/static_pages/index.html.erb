@@ -1,0 +1,214 @@
+<body>
+
+  <!-- welcome-page S -->
+  <div class="container-fluid welcome-page">
+
+    <!-- home-nav S -->
+    <nav class="navbar navbar-default navbar-fixed-top" id="home-nav" role="navigation">
+      <div class="container" id="home-nav-container">
+        <!-- toggle minimize S -->
+        <div class="navbar-header" id="home-nav-toggle-minimize">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#home-nav-right-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            <img id="logo-black" class="hide" src="<%= asset_path 'static_pages/boxful-logo-black.png' %>" alt="black-logo">
+            <img id="logo-white" src="<%= asset_path 'static_pages/boxful-logo-white.png' %>" alt="white-logo">
+          </a>
+        </div>
+        <!-- toggle minimize C -->
+
+        <!-- home-nav-right-collapse S -->
+        <div class="collapse navbar-collapse" id="home-nav-right-collapse">
+          <ul class="nav navbar-nav navbar-right" id="home-nav-right-font">
+            <li>
+              <a id="nav-how-it-works" href="">How it works</a>
+            </li>
+            <li>
+              <a id="nav-pricing" href="">Pricing</a>
+            </li>
+            <li>
+              <a id="nav-faq" href="">FAQ</a>
+            </li>
+            <li>
+              <a id="nav-login" href="">Login</a>
+            </li>
+            <li>
+              <button class="btn" id="nav-btn-gt">GET STARTED</button>
+            </li>
+          </ul>
+        </div>
+        <!-- home-nav-right-collapse C -->
+      </div>
+    </nav>
+    <!-- home-nav C -->
+
+    <!-- home-box-1 S -->
+    <div class="row" id="home-box-1">
+      <div class="col-xs-12" id="box-1">
+        <h1>YOUR INFINITE CLOSET</h1>
+        <p>Simple storage from HK$49/month.
+          <br>You click. We collect, store and deliver.</p>
+      </div>
+      <% if current_user %>
+        <%= button_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'btn btn-success' %>
+      <% else %>
+        <%= button_to "Sign in", new_user_session_path, :'data-id' => 'asdfasd', :class => 'btn btn-success' %>
+        <%= button_to "Sign up", new_user_registration_path, :method => :get, :class => 'btn btn-warning' %>
+      <% end %>
+      <div class="col-xs-12 sign-up-form">
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+          <%= f.text_field :name, :placeholder => "Full Name" %>
+          <%= f.email_field :email, :placeholder => "Email" %>
+          <%= f.password_field :password, :placeholder => "Password"%>
+          <%= f.password_field :password_confirmation, :placeholder => "Confirm Password" %>
+          <%= f.submit "Sign up" %>
+        <% end %>
+      </div>
+      <div class="col-xs-12 sign-in-form">
+        <%= form_for(:user, :url => session_path(:user)) do |f| %>
+          <%= devise_error_messages! %>
+          <%= f.email_field :email, :placeholder => "Email" %>
+          <%= f.password_field :password, :placeholder => "Password"%>
+          <%= f.submit "Sign up" %>
+        <% end %>
+      </div>
+      <div>
+        <button class="btn" id="pickup-btn">SCHEDULE FREE PICKUP</button>
+      </div>
+    </div>
+    <!-- home-box-1 C -->
+
+    <!-- home-box-2 S -->
+    <div class="row fonting" id="home-box-2">
+      <div class="col-xs-12 section-title">
+        <h1>HOW IT WORKS</h1>
+        <img class="title-underline" src="<%= asset_path 'static_pages/title-underline.png' %>">
+      </div>
+      <div class="col-xs-12 col-sm-4 hiw-border">
+        <img class="hiw-img" src="<%= asset_path 'static_pages/boximg1.png' %>">
+        <h1>1</h1>
+        <h2>Deliver.</h2>
+        <p>We deliver durable,
+          <br>water-resistant boxes
+          <br>to your doorstep</p>
+      </div>
+      <div class="col-xs-12 col-sm-4 hiw-border">
+        <img class="hiw-img" src="<%= asset_path 'static_pages/boximg2.png' %>">
+        <h1>2</h1>
+        <h2>Pack.</h2>
+        <p>Pack your stuff
+          <br>into our boxes and
+          <br> we pick it up</p>
+      </div>
+      <div class="col-xs-12 col-sm-4 hiw-border">
+        <img class="hiw-img" src="<%= asset_path 'static_pages/boximg3.png' %>">
+        <h1>3</h1>
+        <h2>Store.</h2>
+        <p>We store your boxes
+          <br>at our secure,
+          <br>climate-controlled facility</p>
+      </div>
+    </div>
+    <!-- home-box-2 C -->
+
+    <!-- home-box-3 S -->
+    <div class="row fonting" id="home-box-3">
+      <div class="col-xs-12 section-title">
+        <h1>MANAGE ONLINE</h1>
+        <img class="title-underline" src="<%= asset_path 'static_pages/title-underline.png' %>">
+      </div>
+      <div class="col-xs-12 col-sm-7 mo-padding">
+        <img class="mo-img" src="<%= asset_path 'static_pages/boximg4.png' %>">
+      </div>
+      <div class="col-xs-12 col-sm-5 mo-padding" id="mo-article">
+        <h2>Convenience.</h2>
+        <p>Create a visual catalogue on your computer or mobile device.
+          <br> Manage your items online and retrieve your boxes with just a few clicks.</p>
+      </div>
+    </div>
+    <!-- home-box-3 C -->
+
+    <!-- home-box-4 S -->
+    <div class="row fonting" id="home-box-4">
+      <div class="col-xs-12 section-title">
+        <h1>SECURITY</h1>
+        <img class="title-underline" src="<%= asset_path 'static_pages/title-underline.png' %>">
+      </div>
+      <div class="col-xs-6 col-sm-3 s-padding">
+        <img class="security-item" src="<%= asset_path 'static_pages/security-item1.png' %>">
+        <h2>24/7<br>Surveillance</h2>
+        <p>24-hour CCTV, manned
+          <br>security and restricted
+          <br>public access</p>
+      </div>
+      <div class="col-xs-6 col-sm-3 s-padding">
+        <img class="security-item" src="<%= asset_path 'static_pages/security-item2.png' %>">
+        <h2>Direct Pickups<br> and Deliveries</h2>
+        <p>Professional moving team
+          <br>picks-up and delivers
+          <br>directly to and from our
+          <br>facilities</p>
+      </div>
+      <div class="col-xs-6 col-sm-3 s-padding">
+        <img class="security-item" src="<%= asset_path 'static_pages/security-item3.png' %>">
+        <h2>Climate Controlled Facility</h2>
+        <p>Temperature and humidity-
+          <br>controlled with fire
+          <br>protection systems</p>
+      </div>
+      <div class="col-xs-6 col-sm-3 s-padding">
+        <img class="security-item" src="<%= asset_path 'static_pages/security-item4.png' %>">
+        <h2>Free Insurance</h2>
+        <p>Every box comes with free
+          <br>insurance that insures up to
+          <br>HK$1,000</p>
+      </div>
+    </div>
+    <!-- home-box-4 C -->
+
+    <!-- home-box-5 S -->
+    <div class="row fonting" id="home-box-5">
+      <div class="col-xs-12 section-title">
+        <h1>PRICING</h1>
+        <img class="title-underline" src="<%= asset_path 'static_pages/title-underline.png' %>">
+      </div>
+      <div class="col-xs-12 col-sm-6 p-padding">
+        <img id="pricingbox" src="<%= asset_path 'static_pages/pricingbox.png' %>">
+      </div>
+      <div class="col-xs-12 col-sm-6 p-padding">
+        <ul>
+          <li>
+            <h2>HK$49/month per box</h2>
+          </li>
+          <li>
+            <p><strong>Free</strong> drop off of durable boxes</p>
+          </li>
+          <li>
+            <p><strong>Free</strong> pick up of packed boxes</p>
+          </li>
+          <li>
+            <p><strong>Free</strong> insurance with every box</p>
+          </li>
+          <li>
+            <p><strong>No minimum</strong> order or contract period</p>
+          </li>
+          <li>
+            <p>We return your boxes for HK$100 + HK$25 per box</p>
+          </li>
+          <li>
+            <p class="weak-font">* Your billing cycle will begin once we’ve picked up your
+              <br>boxes or two weeks after the drop-off date, whichever
+              <br>date is earlier.We ask you to limit the weight of each box to 20kg.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- home-box-5 C -->
+  </div>
+  <!-- welcome-page C -->
+</body>
