@@ -43,6 +43,32 @@
     <!-- p-nav C -->
 
 
-
+    <div id="section-1">
+      <%= form_for @address, :method => :post do |f| %>
+        <div>
+          <%= f.label :address1 %>
+          <%= f.text_field :address1 %>
+        </div>
+        <div>
+          <%= f.label :address2 %>
+          <%= f.text_field :address2 %>
+        </div>
+        <div>
+          <%= f.label :region %>
+          <%= f.text_field :region %>
+        </div>
+        <div>
+          <%= f.label :district %>
+          <%= f.text_field :district %>
+        </div>
+        <div>
+          <%= f.label :phone %>
+          <%= f.number_field :phone %>
+        </div>
+        <div>
+          <%= f.submit "Submit" %>
+        </div>
+      <% end %>
+    </div>
 
 </body>
