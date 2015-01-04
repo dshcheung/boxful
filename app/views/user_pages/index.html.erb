@@ -4,6 +4,43 @@
 
   <div id="section-1">
     <h1>My Boxes</h1>
+
+    <div class="col-xs-4">
+      <h2>@Home</h2>
+      <table class="table" data-toggle="table">
+        <thead>
+          <tr>
+            <th>Box ID</th>
+            <th>Order ID</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="col-xs-4">
+      <h2>@Transit</h2>
+      <table class="table" data-toggle="table">
+        <thead>
+          <tr>
+            <th>Box ID</th>
+            <th>Order ID</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="col-xs-4">
+      <h2>@Warehouse</h2>
+      <table class="table" data-toggle="table">
+        <thead>
+          <tr>
+            <th>Box ID</th>
+            <th>Order ID</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+
+
     <% @delivery_addresses.each do |address| %>
     <h2>@ <%= address.address1 + ", " + address.address2 + ", " + address.region + ", " + address.district %></h2>
       <table class="table" data-toggle="table">
