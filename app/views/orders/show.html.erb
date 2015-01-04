@@ -1,0 +1,26 @@
+<div class="container-fluid private-page">
+
+  <%= render :partial => 'navbar/private_nav' %>
+
+  <div id="section-1">
+    <h1>Boxes</h1>
+    <table class="table" data-toggle="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Order ID</th>
+          <th>User ID</th>
+          <th>Created At</th>
+        </tr>
+        <% @boxes.each do |box| %>
+          <tr>
+            <td class="active"><%= box.id %></td>
+            <td class="success"><%= box.order_id %></td>
+            <td class="warning"><%= box.user_id %></td>
+            <td class="info"><%= box.created_at.to_date.to_s %></td>
+          </tr>
+        <% end %>
+      </thead>
+    </table>
+  </div>
+</div>

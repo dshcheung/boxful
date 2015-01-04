@@ -9,12 +9,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up).push(:name)
   end
 
-  def after_sign_in_path_for(resource_or_scope)
+  def after_sign_in_path_for(resource)
     user_pages_path
   end
 
+  def after_sign_up_path_for(resource)
+    orders_path
+  end
+
   def after_inactive_sign_up_path_for(resource)
-    user_pages_path
+    orders_path
   end
 
 end

@@ -11,15 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104134917) do
+ActiveRecord::Schema.define(version: 20150104205736) do
 
-  create_table "addresses", force: true do |t|
+  create_table "boxes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "delivery_addresses", force: true do |t|
     t.string   "address1"
     t.string   "address2"
     t.string   "region"
     t.string   "district"
-    t.integer  "phone"
+    t.integer  "contact_number"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "location_types", force: true do |t|
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_types", force: true do |t|
+    t.string   "order_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "amount"
+    t.integer  "order_type_id"
+    t.integer  "user_id"
+    t.integer  "delivery_address_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

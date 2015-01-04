@@ -30,13 +30,23 @@ Rails.application.routes.draw do
 #                         PUT    /user_pages/:id(.:format)      user_pages#update
 #                         DELETE /user_pages/:id(.:format)      user_pages#destroy
 
-  resources :addresses
-#               addresses GET    /addresses(.:format)           addresses#index
-#                         POST   /addresses(.:format)           addresses#create
-#             new_address GET    /addresses/new(.:format)       addresses#new
-#            edit_address GET    /addresses/:id/edit(.:format)  addresses#edit
-#                 address GET    /addresses/:id(.:format)       addresses#show
-#                         PATCH  /addresses/:id(.:format)       addresses#update
-#                         PUT    /addresses/:id(.:format)       addresses#update
-#                         DELETE /addresses/:id(.:format)       addresses#destroy
+  resources :delivery_addresses
+#      delivery_addresses GET    /delivery_addresses(.:format)          delivery_addresses#index
+#                         POST   /delivery_addresses(.:format)          delivery_addresses#create
+#    new_delivery_address GET    /delivery_addresses/new(.:format)      delivery_addresses#new
+#   edit_delivery_address GET    /delivery_addresses/:id/edit(.:format) delivery_addresses#edit
+#        delivery_address GET    /delivery_addresses/:id(.:format)      delivery_addresses#show
+#                         PATCH  /delivery_addresses/:id(.:format)      delivery_addresses#update
+#                         PUT    /delivery_addresses/:id(.:format)      delivery_addresses#update
+#                         DELETE /delivery_addresses/:id(.:format)      delivery_addresses#destroy
+
+  resources :orders
+#                  orders GET    /orders(.:format)              orders#index
+#                         POST   /orders(.:format)              orders#create
+#               new_order GET    /orders/new(.:format)          orders#new
+#              edit_order GET    /orders/:id/edit(.:format)     orders#edit
+#                   order GET    /orders/:id(.:format)          orders#show
+#                         PATCH  /orders/:id(.:format)          orders#update
+#                         PUT    /orders/:id(.:format)          orders#update
+#                         DELETE /orders/:id(.:format)          orders#destroy
 end

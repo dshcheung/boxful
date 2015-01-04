@@ -1,5 +1,6 @@
 class UserPagesController < ApplicationController
   def index
-    @address = Address.new
+    @orders = current_user.orders
+    @delivery_addresses = current_user.delivery_addresses
   end
 end

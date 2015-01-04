@@ -1,0 +1,58 @@
+<div class="container-fluid private-page">
+
+  <%= render :partial => 'navbar/private_nav' %>
+
+  <div id="section-1">
+    <h1>How many boxes do you need?</h1>
+    <%= form_for @order, :method => :post do |f| %>
+      <div>
+        <%= f.label :amount %>
+        <%= f.number_field :amount %>
+      </div>
+      <div class="hide">
+        <%= f.label :order_type_id %>
+        <%= f.number_field :order_type_id, :value => 1 %>
+      </div>
+      <div>
+        <%= f.label :delivery_address_id %>
+        <%= f.number_field :delivery_address_id, :value => 1 %>
+      </div>
+      <div>
+        <%= f.submit "Submit" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="section-2">
+    <h1>When should we pick up your boxes?</h1>
+   </div>
+
+  <div id="section-3">
+    <h1>Where should we drop off your empty boxes?</h1>
+    <%= form_for @delivery_address, :method => :post do |f| %>
+      <div>
+        <%= f.label :address1 %>
+        <%= f.text_field :address1 %>
+      </div>
+      <div>
+        <%= f.label :address2 %>
+        <%= f.text_field :address2 %>
+      </div>
+      <div>
+        <%= f.label :region %>
+        <%= f.text_field :region %>
+      </div>
+      <div>
+        <%= f.label :district %>
+        <%= f.text_field :district %>
+      </div>
+      <div>
+        <%= f.label :contact_number %>
+        <%= f.number_field :contact_number %>
+      </div>
+      <div>
+        <%= f.submit "Submit" %>
+      </div>
+    <% end %>
+  </div>
+</div>

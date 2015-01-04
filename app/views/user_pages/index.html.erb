@@ -1,74 +1,31 @@
-<body>
+<div class="container-fluid private-page">
 
-  <!-- p-page S -->
-  <div class="container-fluid private-page">
+  <%= render :partial => 'navbar/private_nav' %>
 
-    <!-- p-nav S -->
-    <nav class="navbar navbar-default navbar-fixed-top" id="p-nav" role="navigation">
-      <div class="container" id="p-nav-container">
-        <!-- toggle minimize S -->
-        <div class="navbar-header" id="p-nav-toggle-minimize">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#p-nav-right-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/private">
-            <img id="logo-black" src="<%= asset_path 'static_pages/boxful-logo-black.png' %>" alt="black-logo">
-            <img id="logo-white" class="hide"src="<%= asset_path 'static_pages/boxful-logo-white.png' %>" alt="white-logo">
-          </a>
-        </div>
-        <!-- toggle minimize C -->
-
-        <!-- p-nav-right-collapse S -->
-        <div class="collapse navbar-collapse" id="p-nav-right-collapse">
-          <ul class="nav navbar-nav navbar-right" id="p-nav-right-font">
-            <li>
-              <a id="nav-my-stuff" href="">My Stuff</a>
-            </li>
-            <li><a id="nav-schedule-picktup" href="">Schedule Pickup</a>
-            </li>
-            <li><a id="nav-get-boxes" href="">Get Boxes</a>
-            </li>
-            <li><a id="nav-my-account" href="">My Account</a>
-            </li>
-            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :id => "nav-sign-out" %>
-            </li>
-          </ul>
-        </div>
-        <!-- p-nav-right-collapse C -->
-      </div>
-    </nav>
-    <!-- p-nav C -->
-
-
-    <div id="section-1">
-      <%= form_for @address, :method => :post do |f| %>
-        <div>
-          <%= f.label :address1 %>
-          <%= f.text_field :address1 %>
-        </div>
-        <div>
-          <%= f.label :address2 %>
-          <%= f.text_field :address2 %>
-        </div>
-        <div>
-          <%= f.label :region %>
-          <%= f.text_field :region %>
-        </div>
-        <div>
-          <%= f.label :district %>
-          <%= f.text_field :district %>
-        </div>
-        <div>
-          <%= f.label :phone %>
-          <%= f.number_field :phone %>
-        </div>
-        <div>
-          <%= f.submit "Submit" %>
-        </div>
-      <% end %>
-    </div>
-
-</body>
+  <div id="section-1">
+    <h1>My Boxes</h1>
+    <% @delivery_addresses.each do |address| %>
+    <h2>@ <%= address.address1 + ", " + address.address2 + ", " + address.region + ", " + address.district %></h2>
+      <table class="table" data-toggle="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Order ID</th>
+            <th>Date</th>
+          </tr>
+          <% address.orders.each do |order| %>
+            <% order.boxes.each do |box| %>
+              <tr>
+                <td class="active"><%= box.id %></td>
+                <td class="success"><%= box.user_id %></td>
+                <td class="warning"><%= box.order_id %></td>
+                <td class="info"><%= box.created_at.to_date.to_s %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </thead>
+      </table>
+    <% end %>
+  </div>
+</div>
