@@ -11,22 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104205736) do
+ActiveRecord::Schema.define(version: 20150104232115) do
 
   create_table "boxes", force: true do |t|
     t.integer  "user_id"
     t.integer  "order_id"
+    t.integer  "warehouse_position_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cars", force: true do |t|
+    t.string   "license"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "delivery_addresses", force: true do |t|
+    t.string   "name"
     t.string   "address1"
     t.string   "address2"
     t.string   "region"
     t.string   "district"
     t.integer  "contact_number"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "drivers", force: true do |t|
+    t.string   "name"
+    t.integer  "contact"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "histories", force: true do |t|
+    t.integer  "box_id"
+    t.integer  "location_type_id"
+    t.integer  "delivery_address_id"
+    t.integer  "transit_id"
+    t.integer  "warehouse_position_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,6 +77,13 @@ ActiveRecord::Schema.define(version: 20150104205736) do
     t.datetime "updated_at"
   end
 
+  create_table "transits", force: true do |t|
+    t.integer  "car_id"
+    t.integer  "driver_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email",                  default: "", null: false
@@ -70,5 +102,24 @@ ActiveRecord::Schema.define(version: 20150104205736) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "warehouse_positions", force: true do |t|
+    t.string   "row"
+    t.string   "column"
+    t.integer  "warehouse_id"
+    t.integer  "box_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "warehouses", force: true do |t|
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "region"
+    t.string   "district"
+    t.integer  "contact"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

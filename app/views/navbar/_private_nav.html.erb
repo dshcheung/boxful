@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="p-nav-right-collapse">
         <ul class="nav navbar-nav navbar-right" id="p-nav-right-font">
           <li>
-            <%= link_to "My Stuff", user_pages_path, :id => "nav-my-stuff" %>
+            <%= link_to "My Boxes", user_pages_path, :id => "nav-my-stuff" %>
           </li>
           <li>
             <a href="">Schedule Pickup</a>
@@ -28,7 +28,8 @@
           <li>
             <%= link_to "Get Boxes", orders_path, :method => :get, :id => "nav-shedule-pickup" %>
           </li>
-          <li><a id="nav-my-account" href="">My Account</a>
+          <li>
+            <%= link_to "My Info", user_page_path(:id => current_user.id), :method => :get, :id => "nav-my-account" %>
           </li>
           <li>
             <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :id => "nav-sign-out" %>

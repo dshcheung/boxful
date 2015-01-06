@@ -13,12 +13,4 @@ class ApplicationController < ActionController::Base
     user_pages_path
   end
 
-  def after_sign_up_path_for(resource)
-    orders_path
-  end
-
-  def after_inactive_sign_up_path_for(resource)
-    orders_path
-  end
-
 end

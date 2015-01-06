@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
 #        new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
 #            user_session POST   /users/sign_in(.:format)       devise/sessions#create
 #    destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy

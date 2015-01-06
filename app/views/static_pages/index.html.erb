@@ -58,7 +58,7 @@
           <br>You click. We collect, store and deliver.</p>
       </div>
       <div class="col-xs-12 sign-up-form">
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "sign_up_user"}, :format => :json, :remote => true ) do |f| %>
           <%= devise_error_messages! %>
           <div class="sign-up-input"><%= f.text_field :name, :placeholder => "Full Name" %></div>
           <div class="sign-up-input"><%= f.email_field :email, :placeholder => "Email" %></div>
@@ -69,10 +69,10 @@
       </div>
 
       <div class="col-xs-12 sign-in-form">
-        <%= form_for(:user, :url => session_path(:user)) do |f| %>
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name) , :html => {:id => "sign_in_user"}, :format => :json, :remote => true) do |f| %>
           <%= devise_error_messages! %>
           <div class="sign-in-input"><%= f.email_field :email, :placeholder => "Email" %></div>
-          <div class="sign-in-input"><%= f.password_field :password, :placeholder => "Password"%></div>
+          <div class="sign-in-input"><%= f.password_field :password, :placeholder => "Password", :value => 12345678 %></div>
           <div><%= f.submit "Sign in" %></div>
         <% end %>
       </div>

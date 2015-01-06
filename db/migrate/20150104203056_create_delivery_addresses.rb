@@ -2,6 +2,7 @@ class CreateDeliveryAddresses < ActiveRecord::Migration
   def change
     create_table :delivery_addresses do |t|
 
+      t.string :name
       t.string :address1
       t.string :address2
       t.string :region

@@ -1,9 +1,10 @@
 <div class="container-fluid private-page">
 
   <%= render :partial => 'navbar/private_nav' %>
-
+  
   <div id="section-1">
-    <h1>My Boxes</h1>
+    <h1 id="flash-message"><%= flash[:success] %></h1>
+    <h1>My Boxes Summary</h1>
 
     <div class="col-xs-4">
       <h2>@Home</h2>
@@ -13,6 +14,14 @@
             <th>Box ID</th>
             <th>Order ID</th>
           </tr>
+          <% @boxes.each do |box| %>
+            <% if box.histories.last.location_type_id == 1 %>
+              <tr>
+                <td><%= box.id %></td>
+                <td><%= box.order_id %></td>
+              </tr>
+            <% end %>
+          <% end %>
         </thead>
       </table>
     </div>
@@ -24,6 +33,14 @@
             <th>Box ID</th>
             <th>Order ID</th>
           </tr>
+          <% @boxes.each do |box| %>
+            <% if box.histories.last.location_type_id == 2 %>
+              <tr>
+                <td><%= box.id %></td>
+                <td><%= box.order_id %></td>
+              </tr>
+            <% end %>
+          <% end %>
         </thead>
       </table>
     </div>
@@ -35,34 +52,15 @@
             <th>Box ID</th>
             <th>Order ID</th>
           </tr>
-        </thead>
-      </table>
-    </div>
-
-
-
-    <% @delivery_addresses.each do |address| %>
-    <h2>@ <%= address.address1 + ", " + address.address2 + ", " + address.region + ", " + address.district %></h2>
-      <table class="table" data-toggle="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>User ID</th>
-            <th>Order ID</th>
-            <th>Date</th>
-          </tr>
-          <% address.orders.each do |order| %>
-            <% order.boxes.each do |box| %>
+          <% @boxes.each do |box| %>
+            <% if box.histories.last.location_type_id == 3 %>
               <tr>
-                <td class="active"><%= box.id %></td>
-                <td class="success"><%= box.user_id %></td>
-                <td class="warning"><%= box.order_id %></td>
-                <td class="info"><%= box.created_at.to_date.to_s %></td>
+                <td><%= box.id %></td>
+                <td><%= box.order_id %></td>
               </tr>
             <% end %>
           <% end %>
         </thead>
       </table>
-    <% end %>
-  </div>
+    </div>
 </div>
