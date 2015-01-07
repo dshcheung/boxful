@@ -1,0 +1,19 @@
+$(document).ready(function(){
+  $(document).on("ajax:success", "#initial_delivery_address", function(e, data, status, xhr){
+    if(data.success){
+      $('#order-page-messages').text('Successfully Created Address');
+      $('#initial_delivery_address').trigger('reset');
+      $('#initial-address-form-div').addClass('hide');
+      $('#new-order-form-div').removeClass('hide');
+    };
+  });
+  $(document).on("ajax:success", "#new-get-empty-order", function(e, data, status, xhr){
+    if(data.success){
+      $('#order-page-messages').html('We Have Received Your Order<br>Redirecting In 10 Seconds');
+      $('#new-order-form-div').addClass('hide');
+      setTimeout(function(){
+        window.location.href = Routes.user_pages_path();
+      }, 10000);
+    };
+  })
+});

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 #                    root GET    /                              static_pages#index
 
+  get '/offers/:id', :to => 'user_pages#index', :as => 'offers'
   resources :user_pages
 #              user_pages GET    /user_pages(.:format)          user_pages#index
 #                         POST   /user_pages(.:format)          user_pages#create

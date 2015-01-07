@@ -2,10 +2,9 @@ class DeliveryAddressesController < ApplicationController
   def create
     address = current_user.delivery_addresses.new(delivery_address_params)
     if address.save
-      render json: address, status: 201
+      render json: {data: address, status: 201, success: true}
     else
-      flash[:message] = address.errors.messages
-      redirect_to :back
+      render json: {data: address, success: false, eMessage: address.errors.messags}
     end
   end
 

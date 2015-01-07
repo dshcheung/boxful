@@ -3,28 +3,60 @@
   <%= render :partial => 'navbar/private_nav' %>
 
   <div id="section-1">
-    <h1>How many boxes do you need?</h1>
-    <%= form_for @order, :html => {:id => "new_order_1"} do |f| %>
-      <div>
-        <%= f.label :amount %>
-        <%= f.number_field :amount %>
-      </div>
-      <div>
-        <label for="select">To</label>
-        <select name="Address" id="user-addresses">
-          <% @delivery_addresses.each do |address| %>
-            <option value="<%= address.id %>"><%= address.name %></option>
-          <% end %>
-        </select>
-      </div>
-      <div>
-        <%= f.submit "Submit" %>
-      </div>
-    <% end %>
+    <div>
+      <h1 id="order-page-messages"></h1>
+    </div>
+    <div class=<% if @delivery_addresses.empty? %>''<% else %>'hide'<% end %> id="initial-address-form-div">
+      <h1>Please Enter Your Address</h1>
+      <%= form_for @delivery_address, :url => delivery_addresses_path, :html => {:id => "initial_delivery_address"}, :format => :json, :remote => true do |f| %>
+        <div>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+        <div>
+          <%= f.label :address1 %>
+          <%= f.text_field :address1 %>
+        </div>
+        <div>
+          <%= f.label :address2 %>
+          <%= f.text_field :address2 %>
+        </div>
+        <div>
+          <%= f.label :region %>
+          <%= f.text_field :region %>
+        </div>
+        <div>
+          <%= f.label :district %>
+          <%= f.text_field :district %>
+        </div>
+        <div>
+          <%= f.label :contact_number %>
+          <%= f.number_field :contact_number %>
+        </div>
+        <div>
+          <%= f.submit "Submit" %>
+        </div>
+      <% end %>
+    </div>
+    <div class=<% if @delivery_addresses.empty? %>'hide'<% else %>''<% end %> id="new-order-form-div">
+      <h1>How many boxes do you need?</h1>
+      <%= form_for @order, :url => orders_path, :html => {:id => "new-get-empty-order"}, :format => :json, :remote => true do |f| %>
+        <div>
+          <%= f.label :amount %>
+          <%= f.number_field :amount %>
+        </div>
+        <div>
+          <label for="select">To</label>
+          <select name="Address" id="user-addresses">
+            <% @delivery_addresses.each do |address| %>
+              <option value="<%= address.id %>"><%= address.name %></option>
+            <% end %>
+          </select>
+        </div>
+        <div>
+          <%= f.submit "Order", :class => "btn btn-success"%>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div id="section-2">
-    <h1>When should we pick up your boxes?</h1>
-   </div>
-    <h1 id="fun"></h1>
 </div>

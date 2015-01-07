@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def index
     @order = Order.new
+    @delivery_address = DeliveryAddress.new
     @delivery_addresses = current_user.delivery_addresses
   end
 
@@ -11,11 +12,9 @@ class OrdersController < ApplicationController
       history = box.histories.new(:location_type_id => 2)
     end
     if order.save
-      flash[:success] = "Your Order Has Been Recieved."
-      redirect_to user_pages_path
+      render json: {data: order, status: 201, success: true}
     else
-      flash[:message] = order.errors.messages
-      redirect_to :back
+      render json: {data: order, success: false, eMessage: order.errors.messages}
     end
   end
 
