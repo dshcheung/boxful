@@ -11,14 +11,22 @@
       <table class="table" data-toggle="table">
         <thead>
           <tr>
+            <th>Icon</th>
             <th>Box ID</th>
             <th>Order ID</th>
           </tr>
           <% @boxes.each do |box| %>
             <% if box.histories.last.location_type_id == 1 %>
               <tr>
+                <td><%= image_tag box.avatar.url(:icon) %></td>
                 <td><%= box.id %></td>
                 <td><%= box.order_id %></td>
+                <td>
+                  <%= form_for box, :url => box_path(box), :method => "patch" do |f| %>
+                    <div><%= f.file_field :avatar %></div>
+                    <div><%= f.submit 'upload' %></div>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           <% end %>
@@ -30,14 +38,22 @@
       <table class="table" data-toggle="table">
         <thead>
           <tr>
+            <th>Icon</th>
             <th>Box ID</th>
             <th>Order ID</th>
           </tr>
           <% @boxes.each do |box| %>
             <% if box.histories.last.location_type_id == 2 %>
               <tr>
+                <td><%= image_tag box.avatar.url(:icon) %></td>
                 <td><%= box.id %></td>
                 <td><%= box.order_id %></td>
+                <td>
+                  <%= form_for box, :url => box_path(box), :method => "patch" do |f| %>
+                    <div><%= f.file_field :avatar %></div>
+                    <div><%= f.submit 'upload' %></div>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           <% end %>
@@ -49,14 +65,22 @@
       <table class="table" data-toggle="table">
         <thead>
           <tr>
+            <th>Icon</th>
             <th>Box ID</th>
             <th>Order ID</th>
           </tr>
           <% @boxes.each do |box| %>
             <% if box.histories.last.location_type_id == 3 %>
               <tr>
+                <td><%= image_tag box.avatar.url(:icon) %></td>
                 <td><%= box.id %></td>
                 <td><%= box.order_id %></td>
+                <td>
+                  <%= form_for box, :url => box_path(box), :method => "patch" do |f| %>
+                    <div><%= f.file_field :avatar %></div>
+                    <div><%= f.submit 'upload' %></div>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           <% end %>

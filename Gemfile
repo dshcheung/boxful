@@ -35,6 +35,15 @@ gem 'binding_of_caller', group: :development
 #javascript routes
 gem "js-routes"
 
+#paper clip file upload
+gem "paperclip", "~> 4.2"
+
+#amazon s3
+gem 'aws-sdk', '~> 1.5.7'
+
+#env file protection gem
+gem 'dotenv-rails', :groups => [:development, :test]
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

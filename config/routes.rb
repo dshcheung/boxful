@@ -50,4 +50,15 @@ Rails.application.routes.draw do
 #                         PATCH  /orders/:id(.:format)          orders#update
 #                         PUT    /orders/:id(.:format)          orders#update
 #                         DELETE /orders/:id(.:format)          orders#destroy
+
+resources :boxes
+#                   boxes GET    /boxes(.:format)                       boxes#index
+#                         POST   /boxes(.:format)                       boxes#create
+#                 new_box GET    /boxes/new(.:format)                   boxes#new
+#                edit_box GET    /boxes/:id/edit(.:format)              boxes#edit
+#                     box GET    /boxes/:id(.:format)                   boxes#show
+#                         PATCH  /boxes/:id(.:format)                   boxes#update
+#                         PUT    /boxes/:id(.:format)                   boxes#update
+#                         DELETE /boxes/:id(.:format)                   boxes#destroy
+
 end

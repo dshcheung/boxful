@@ -13,4 +13,6 @@ class ApplicationController < ActionController::Base
     user_pages_path
   end
 
+  #configure_devise_permitted_parameters
+
 end
