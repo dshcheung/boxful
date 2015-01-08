@@ -1,0 +1,9 @@
+$(document).ready(function(){
+  $(document).on('ajax:success', '#new_pick_full_order', function(e, data, status, xhr){
+      $('#pickup-page-messages').html('We Have Received Your Order<br>Redirecting In 5 Seconds');
+      $('#new-pickup-form-div').addClass('hide');
+      setTimeout(function(){
+        window.location.href = Routes.user_pages_path();
+      }, 5000);
+  });
+});

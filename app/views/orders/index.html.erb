@@ -33,6 +33,10 @@
           <%= f.label :contact_number %>
           <%= f.number_field :contact_number %>
         </div>
+        <div class="hide">
+          <%= f.label :default %>
+          <%= f.check_box :default, checked: "checked"%>
+        </div>
         <div>
           <%= f.submit "Submit" %>
         </div>
@@ -42,16 +46,38 @@
       <h1>How many boxes do you need?</h1>
       <%= form_for @order, :url => orders_path, :html => {:id => "new-get-empty-order"}, :format => :json, :remote => true do |f| %>
         <div>
-          <%= f.label :amount %>
-          <%= f.number_field :amount %>
+          <label for="initial_box_amount">Amount of Boxes</label>
+          <input type="number" name="amount" id="initial_box_amount">
         </div>
         <div>
-          <label for="select">To</label>
-          <select name="Address" id="user-addresses">
-            <% @delivery_addresses.each do |address| %>
-              <option value="<%= address.id %>"><%= address.name %></option>
+          <%= f.label :delivery_address_id %>
+          <%= f.select :delivery_address_id do %>
+            <% if @delivery_addresses.empty? != true %>
+              <% @delivery_addresses.each do |address| %>
+                <% if address.default = 1 %>
+                  <%= content_tag(:option, address.name, value: address.id, selected: "selected") %>
+                <% else %>
+                  <%= content_tag(:option, address.name, value: address.id) %>
+                <% end %>
+              <% end %>
             <% end %>
-          </select>
+          <% end %>
+        </div>
+        <div>
+          <%= f.label :date_when %>
+          <%= f.date_field :date_when %>
+        </div>
+        <div>
+          <%= f.label :time_when_id %>
+          <%= f.select :time_when_id do %>
+            <%= content_tag(:option, "Select Time", value: 0) %>)
+            <% @time.each do |time| %>
+              <%= content_tag(:option, time.time, value: time.id) %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="hide">
+          <%= f.number_field :order_type_id, value: 1 %>
         </div>
         <div>
           <%= f.submit "Order", :class => "btn btn-success"%>

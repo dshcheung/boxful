@@ -5,6 +5,7 @@ $(document).ready(function(){
       $('#initial_delivery_address').trigger('reset');
       $('#initial-address-form-div').addClass('hide');
       $('#new-order-form-div').removeClass('hide');
+      $('select#order_delivery_address_id').append('<option value="' + data.data.id + '">' +data.data.name + '</option>')
     };
   });
   $(document).on("ajax:success", "#new-get-empty-order", function(e, data, status, xhr){

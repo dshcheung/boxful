@@ -25,7 +25,7 @@
 
     <div class="col-xs-6" id="delivery-address-form-div">
       <h1>Create a new Address!</h1>
-      <%= form_for @delivery_address do |f| %>
+      <%= form_for @delivery_address, url: delivery_addresses_path, html: {id: "new_delivery_address"}, format: :json, remote: true do |f| %>
         <div>
           <%= f.label :name %>
           <%= f.text_field :name %>
@@ -49,6 +49,10 @@
         <div>
           <%= f.label :contact_number %>
           <%= f.number_field :contact_number %>
+        </div>
+        <div>
+          <%= f.label :default %>
+          <%= f.check_box :default %>
         </div>
         <div>
           <%= f.submit "Submit" %>

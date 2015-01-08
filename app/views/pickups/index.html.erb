@@ -1,0 +1,48 @@
+<div class="container-fluid private-page">
+
+  <%= render :partial => 'navbar/private_nav' %>
+
+  <div id="section-1">
+    <h1 id="pickup-page-messages"></h1>
+    <div id="new-pickup-form-div">
+      <% if @have_boxes == true %>
+        <%= form_for @order, :url => pickups_path, :html => {:id => "new_pick_full_order"}, :format => :json, :remote => true do |f| %>
+          <div>
+            <%= f.label :delivery_address_id %>
+            <%= f.select :delivery_address_id do %>
+              <% if @delivery_addresses.empty? != true %>
+                <% @delivery_addresses.each do |address| %>
+                  <% if address.default == 1 %>
+                    <%= content_tag(:option, address.name, value: address.id, selected: "selected") %>
+                  <% else %>
+                    <%= content_tag(:option, address.name, value: address.id) %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+          <div>
+            <%= f.label :date_when %>
+            <%= f.date_field :date_when %>
+          </div>
+          <div>
+            <%= f.label :time_when_id %>
+            <%= f.select :time_when_id do %>
+              <%= content_tag(:option, "Select Time", value: 0) %>)
+              <% @time.each do |time| %>
+                <%= content_tag(:option, time.time, value: time.id) %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="hide">
+            <%= f.number_field :order_type_id, value: 4 %>
+          </div>
+          <div>
+            <%= f.submit "Order", :class => "btn btn-success"%>
+          </div>
+        <% end %>
+      <% else %>
+        <h1>You do not have any boxes for us to pick up</h1>
+     <% end %>
+    </div>
+</div>

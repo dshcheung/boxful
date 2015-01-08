@@ -1,32 +1,10 @@
 $(document).ready(function(){
-  $(document).on('submit', '#new_delivery_address', function(e){
-    e.preventDefault();
-    $.ajax({
-      type: 'post',
-      url: '/delivery_addresses',
-      beforeSend: function(xhr){
-        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').prop('content'))
-      },
-      data: {
-        delivery_address: {
-          name: $('#delivery_address_name').val(),
-          address1: $('#delivery_address_address1').val(),
-          address2: $('#delivery_address_address2').val(),
-          region: $('#delivery_address_region').val(),
-          district: $('#delivery_address_district').val(),
-          contact_number: $('#delivery_address_contact_number').val()
-        }
-      },
-      success: function(r){
-        $('#new_delivery_address').trigger('reset');
-        $('#address-table').append(
-          '<tr><td>'+ r.name + '</td>' +
-          '<td>' + r.address1 + ', ' + r.address2 + ', ' + r.region + ', ' + r.district +
-          '</td></tr>');
-      },
-      error: function(r){
-        console.log("failed");
-      }
-    }); 
+  $(document).on('ajax:success', '#new_delivery_address', function(e, data, status, xhr){
+    console.log(e)
+    console.log(data);
+    if(data.success){
+      $('#new_delivery_address').trigger('reset');
+      $('#delivery-address-table table thead').append('<tr><td>'+ data.data.name + '</td>' + '<td>' + data.data.address1 + ', ' + data.data.address2 + ', ' + data.data.region + ', ' + data.data.district + '</td></tr>');
+    }
   });
 });

@@ -11,11 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107062724) do
+ActiveRecord::Schema.define(version: 20150108031121) do
+
+  create_table "admins", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
   create_table "boxes", force: true do |t|
     t.integer  "user_id"
-    t.integer  "order_id"
     t.integer  "warehouse_position_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -39,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150107062724) do
     t.string   "district"
     t.integer  "contact_number"
     t.integer  "user_id"
+    t.integer  "default"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,6 +84,13 @@ ActiveRecord::Schema.define(version: 20150107062724) do
     t.datetime "updated_at"
   end
 
+  create_table "order_contents", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "box_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "order_types", force: true do |t|
     t.string   "order_type"
     t.datetime "created_at"
@@ -73,10 +98,17 @@ ActiveRecord::Schema.define(version: 20150107062724) do
   end
 
   create_table "orders", force: true do |t|
-    t.integer  "amount"
     t.integer  "order_type_id"
     t.integer  "user_id"
     t.integer  "delivery_address_id"
+    t.date     "date_when"
+    t.integer  "time_when_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "time_whens", force: true do |t|
+    t.string   "time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -9,6 +9,7 @@ class CreateDeliveryAddresses < ActiveRecord::Migration
       t.string :district
       t.integer :contact_number
       t.integer :user_id
+      t.integer :default
 
       t.timestamps
     end
