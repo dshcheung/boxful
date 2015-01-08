@@ -1,0 +1,33 @@
+<!-- a-nav S -->
+<nav class="navbar navbar-default navbar-fixed-top" id="a-nav" role="navigation">
+  <div class="container" id="a-nav-container">
+    <!-- toggle minimize S -->
+    <div class="navbar-header" id="a-nav-toggle-minimize">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#a-nav-right-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/admins">
+        <img id="logo-black" src="<%= asset_path 'static_pages/boxful-logo-black.png' %>" alt="black-logo">
+        <img id="logo-white" class="hide"src="<%= asset_path 'static_pages/boxful-logo-white.png' %>" alt="white-logo">
+      </a>
+    </div>
+    <!-- toggle minimize C -->
+
+    <!-- a-nav-right-collapse S -->
+    <div class="collapse navbar-collapse" id="a-nav-right-collapse">
+      <ul class="nav navbar-nav navbar-right" id="a-nav-right-font">
+        <li>
+          <%= link_to "Schedule", admins_path %>
+        </li>
+        <li>
+          <%= link_to "Sign Out", destroy_admin_session_path, method: :delete %>
+        </li>
+      </ul>
+    </div>
+    <!-- a-nav-right-collapse C -->
+  </div>
+</nav>
+<!-- a-nav C -->

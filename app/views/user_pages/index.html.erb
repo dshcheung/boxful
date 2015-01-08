@@ -3,9 +3,27 @@
   <%= render :partial => 'navbar/private_nav' %>
   
   <div id="section-1">
-    <h1 id="flash-message"><%= flash[:success] %></h1>
-    <h1>My Boxes Summary</h1>
-
+    <div class="col-xs-12">
+      <h1 id="flash-message"><%= flash[:success] %></h1>
+      <h1>My Boxes Summary</h1>
+    </div>
+    <div class="col-xs-12">
+      <% home_count = 0 %>
+      <% transit_count = 0 %>
+      <% stored_count = 0 %>
+      <% @boxes.each do |box| %>
+        <% if box.histories.last.location_type_id == 1 %> 
+          <% home_count = home_count + 1 %>
+        <% elsif box.histories.last.location_type_id == 2 %> 
+          <% transit_count = transit_count + 1 %>
+        <% elsif box.histories.last.location_type_id == 3 %> 
+          <% stored_count = stored_count + 1 %>
+        <% end %>
+      <% end %>
+      <div class="col-xs-4"><h1><%= home_count %></h1> at home</div>
+      <div class="col-xs-4"><h1><%= transit_count %></h1> in transit</div>
+      <div class="col-xs-4"><h1><%= stored_count %></h1> in storage</div>
+    </div>
     <div class="col-xs-12">
       <h2>@Home</h2>
       <table class="table" data-toggle="table">
@@ -17,32 +35,6 @@
           </tr>
           <% @boxes.each do |box| %>
             <% if box.histories.last.location_type_id == 1 %>
-              <tr>
-                <td><%= image_tag box.avatar.url(:icon) %></td>
-                <td><%= box.id %></td>
-                <td>
-                  <%= form_for box, :url => box_path(box), :method => "patch" do |f| %>
-                    <div><%= f.file_field :avatar %></div>
-                    <div><%= f.submit 'upload' %></div>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          <% end %>
-        </thead>
-      </table>
-    </div>
-    <div class="col-xs-4 hide">
-      <h2>@Transit</h2>
-      <table class="table" data-toggle="table">
-        <thead>
-          <tr>
-            <th>Icon</th>
-            <th>Box ID</th>
-            <th>Upload</th>
-          </tr>
-          <% @boxes.each do |box| %>
-            <% if box.histories.last.location_type_id == 2 %>
               <tr>
                 <td><%= image_tag box.avatar.url(:icon) %></td>
                 <td><%= box.id %></td>

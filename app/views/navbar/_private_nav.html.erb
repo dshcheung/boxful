@@ -1,42 +1,42 @@
-  <!-- p-nav S -->
-  <nav class="navbar navbar-default navbar-fixed-top" id="p-nav" role="navigation">
-    <div class="container" id="p-nav-container">
-      <!-- toggle minimize S -->
-      <div class="navbar-header" id="p-nav-toggle-minimize">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#p-nav-right-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">
-          <img id="logo-black" src="<%= asset_path 'static_pages/boxful-logo-black.png' %>" alt="black-logo">
-          <img id="logo-white" class="hide"src="<%= asset_path 'static_pages/boxful-logo-white.png' %>" alt="white-logo">
-        </a>
-      </div>
-      <!-- toggle minimize C -->
-
-      <!-- p-nav-right-collapse S -->
-      <div class="collapse navbar-collapse" id="p-nav-right-collapse">
-        <ul class="nav navbar-nav navbar-right" id="p-nav-right-font">
-          <li>
-            <%= link_to "My Boxes", user_pages_path, :id => "nav-my-stuff" %>
-          </li>
-          <li>
-            <%= link_to "Schedule Pickup", pickups_path, :id => "nav-shedule-pickup" %>
-          </li>
-          <li>
-            <%= link_to "Get Boxes", orders_path, :method => :get, :id => "nav-shedule-pickup" %>
-          </li>
-          <li>
-            <%= link_to "My Info", user_page_path(:id => current_user.id), :method => :get, :id => "nav-my-account" %>
-          </li>
-          <li>
-            <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :id => "nav-sign-out" %>
-          </li>
-        </ul>
-      </div>
-      <!-- p-nav-right-collapse C -->
+<!-- p-nav S -->
+<nav class="navbar navbar-default navbar-fixed-top" id="p-nav" role="navigation">
+  <div class="container" id="p-nav-container">
+    <!-- toggle minimize S -->
+    <div class="navbar-header" id="p-nav-toggle-minimize">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#p-nav-right-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <img id="logo-black" src="<%= asset_path 'static_pages/boxful-logo-black.png' %>" alt="black-logo">
+        <img id="logo-white" class="hide"src="<%= asset_path 'static_pages/boxful-logo-white.png' %>" alt="white-logo">
+      </a>
     </div>
-  </nav>
-  <!-- p-nav C -->
+    <!-- toggle minimize C -->
+
+    <!-- p-nav-right-collapse S -->
+    <div class="collapse navbar-collapse" id="p-nav-right-collapse">
+      <ul class="nav navbar-nav navbar-right" id="p-nav-right-font">
+        <li>
+          <%= link_to "My Boxes", user_pages_path, :id => "nav-my-stuff" %>
+        </li>
+        <li>
+          <%= link_to "Schedule Pickup", pickups_path, :id => "nav-shedule-pickup" %>
+        </li>
+        <li>
+          <%= link_to "Get Boxes", orders_path, :method => :get, :id => "nav-shedule-pickup" %>
+        </li>
+        <li>
+          <%= link_to "My Info", user_page_path(:id => current_user.id), :method => :get, :id => "nav-my-account" %>
+        </li>
+        <li>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :id => "nav-sign-out" %>
+        </li>
+      </ul>
+    </div>
+    <!-- p-nav-right-collapse C -->
+  </div>
+</nav>
+<!-- p-nav C -->

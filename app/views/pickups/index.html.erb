@@ -22,11 +22,11 @@
             <% end %>
           </div>
           <div>
-            <%= f.label :date_when %>
-            <%= f.date_field :date_when %>
+            <%= f.label 'At Date' %>
+            <%= f.date_field :date_when, min: Date.today%>
           </div>
           <div>
-            <%= f.label :time_when_id %>
+            <%= f.label 'At Time' %>
             <%= f.select :time_when_id do %>
               <%= content_tag(:option, "Select Time", value: 0) %>)
               <% @time.each do |time| %>

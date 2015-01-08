@@ -1,0 +1,7 @@
+$(document).ready(function(){
+  $(document).on('ajax:success', '.order-status-form', function(e, data, status, xhr){
+    if (data.success){
+      console.log('success12');
+    }
+  });
+});

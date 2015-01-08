@@ -7,6 +7,14 @@ Rails.application.routes.draw do
 
   resources :admins, only: [:index]
 
+  post '/admins/schedule', to: 'admins#change_status'
+  get '/admins/schedule', to: 'admins#schedule'
+
+  # scope :admins do 
+  #   resources :schedule
+  # end
+
+
   resources :user_pages, only: [:index, :show]
 
   resources :delivery_addresses, only: [:create]

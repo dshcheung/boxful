@@ -27,7 +27,7 @@
       <h1>Create a new Address!</h1>
       <%= form_for @delivery_address, url: delivery_addresses_path, html: {id: "new_delivery_address"}, format: :json, remote: true do |f| %>
         <div>
-          <%= f.label :name %>
+          <%= f.label 'Address Name' %>
           <%= f.text_field :name %>
         </div>
         <div>

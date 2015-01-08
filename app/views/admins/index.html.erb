@@ -1,1 +1,45 @@
-<%= link_to "signout", destroy_admin_session_path, method: :delete %>
+<div class="container-fluid private-page">
+
+  <%= render :partial => 'navbar/admin_nav' %>
+
+  <div class="col-xs-12 hide"> <!-- id="section-1"> -->
+    <%= form_tag(admins_schedule_path, method: :get) do %>
+      <%= date_field_tag(:date) %>
+      <%= submit_tag(:schedule) %>
+     <% end %>
+  </div>
+
+  <div class="col-xs-12" id="section-1">
+    <% @orders.each do |order| %>
+      <% address = order.delivery_address %>
+      <div id='order-<%= order.id %>' class="order-divs col-xs-12">
+        <div class="col-xs-6"id="order-address-details">
+          <p><%= order.order_type.order_type %> @ <%= order.time_when.time %></p>
+          <p>Address</p>
+          <p><%= order.user.name %></p>
+          <p><%= address.address1 %> ,<br><%= address.address2 %>,<br><%= address.region %>,<br><%= address.district %></p>
+        </div>
+        <div class="col-xs-6"id="order-content-details">
+          <%= form_tag(admins_schedule_path, method: :post, format: :json, remote: true, :class => "order-status-form") do %>
+            <% order.boxes.each do |box| %>
+              <div>
+                <%= label_tag box.id %>
+                <%= select_tag(box.id, options_for_select([['Status', 0], ['dropped-off', 1], ['picked-up', 2], ['stored', 3]])) %>
+              </div>
+            <% end %>
+            <div>
+              <%= label_tag 'all' %>
+              <%= select_tag(:all, options_for_select([['Status', 0], ['dropped-off', 1], ['picked-up', 2], ['stored', 3]])) %>
+            </div>
+            <div class="hide">
+              <%= number_field_tag 'order_id', order.id %>
+            </div>
+            <div>
+              <%= submit_tag(:update) %>
+            </div>
+        <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
