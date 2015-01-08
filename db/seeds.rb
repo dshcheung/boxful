@@ -30,3 +30,5 @@
   TimeWhen.create(time: "12:00 - 15:00")
   TimeWhen.create(time: "15:00 - 18:00")
   TimeWhen.create(time: "18:00 - 21:00")
+
+  Admin.create(email: "warehouse@boxful.com", password: "warehouse")
