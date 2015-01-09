@@ -13,14 +13,22 @@ $(document).ready(function(){
       noty({
         text: "Please Select a File to Upload",
         animation: {
-            open: {height: 'toggle'}, // jQuery animate function property object
-            close: {height: 'toggle'}, // jQuery animate function property object
-            easing: 'swing', // easing
-            speed: 500 // opening & closing animation speed
-        }
+          open: {height: 'toggle'}, // jQuery animate function property object
+          close: {height: 'toggle'}, // jQuery animate function property object
+          easing: 'swing', // easing
+          speed: 500 // opening & closing animation speed
+      }
       });
     } else {
       $(this).children("div").children("input.btn").prop("disabled", true)
+      noty({
+        text: "Image Have Been Upload",
+        animation: {
+          open: {height: 'toggle'}, // jQuery animate function property object
+          close: {height: 'toggle'}, // jQuery animate function property object
+          easing: 'swing', // easing
+          speed: 500 // opening & closing animation speed
+      }
     }
   })
 });

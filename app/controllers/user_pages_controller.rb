@@ -4,7 +4,7 @@ class UserPagesController < ApplicationController
 
   def index
     @delivery_addresses = current_user.delivery_addresses
-    @boxes = current_user.boxes
+    @boxes = current_user.boxes.order(:id)
   end
 
   def show

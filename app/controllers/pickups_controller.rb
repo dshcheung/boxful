@@ -7,7 +7,7 @@ class PickupsController < ApplicationController
       end
     end
     @order = Order.new
-    @delivery_addresses = current_user.delivery_addresses
+    @delivery_addresses = current_user.delivery_addresses.order(:id)
     @time = TimeWhen.order(:id)
   end
 

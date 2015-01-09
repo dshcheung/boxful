@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   def index
     @order = Order.new
     @delivery_address = DeliveryAddress.new
-    @delivery_addresses = current_user.delivery_addresses
+    @delivery_addresses = current_user.delivery_addresses.order(:id)
     @time = TimeWhen.order(:id)
   end
 
