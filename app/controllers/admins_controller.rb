@@ -16,18 +16,18 @@ class AdminsController < ApplicationController
         Box.find(box.id).histories.create(location_type_id: 1, delivery_address_id: order.delivery_address.id)
       end
       order.destroy
-      render json: {success: true}
+      render json: {success: true, div_control: params[:all]}
     elsif params[:all].to_i == 2
       order.boxes.each do |box|
         Box.find(box.id).histories.create(location_type_id: 2)
       end
-      render json: {success: true}
+      render json: {success: true, div_control: params[:all]}
     elsif params[:all].to_i == 3
       order.boxes.each do |box|
         Box.find(box.id).histories.create(location_type_id: 3)
       end
       order.destroy
-      render json: {success: true}
+      render json: {success: true, div_control: params[:all]}
     end
   end
 end
