@@ -6,52 +6,52 @@
     <div>
       <h1 id="order-page-messages"></h1>
     </div>
-    <div class=<% if @delivery_addresses.empty? %>''<% else %>'hide'<% end %> id="initial-address-form-div">
+    <div class=<% if @delivery_addresses.empty? %>'col-xs-offset-2 col-xs-8'<% else %>'col-xs-offset-2 col-xs-8 hide'<% end %> id="initial-address-form-div">
       <h1>Please Enter Your Address</h1>
-      <%= form_for @delivery_address, :url => delivery_addresses_path, :html => {:id => "initial_delivery_address"}, :format => :json, :remote => true do |f| %>
-        <div>
-          <%= f.label 'Address Name' %>
-          <%= f.text_field :name %>
+      <%= form_for @delivery_address, :url => delivery_addresses_path, :html => {:id => "initial_delivery_address", :class => "col-xs-12"}, :format => :json, :remote => true do |f| %>
+        <div class="row">
+          <%= f.label 'Address Name', :class => "col-xs-offset-3 col-xs-3" %>
+          <%= f.text_field :name, :class => "col-xs-3" %>
         </div>
-        <div>
-          <%= f.label :address1 %>
-          <%= f.text_field :address1 %>
+        <div class="row">
+          <%= f.label :address1, :class => "col-xs-offset-3 col-xs-3" %>
+          <%= f.text_field :address1, :class => "col-xs-3" %>
         </div>
-        <div>
-          <%= f.label :address2 %>
-          <%= f.text_field :address2 %>
+        <div class="row">
+          <%= f.label :address2, :class => "col-xs-offset-3 col-xs-3" %>
+          <%= f.text_field :address2, :class => "col-xs-3" %>
         </div>
-        <div>
-          <%= f.label :region %>
-          <%= f.text_field :region %>
+        <div class="row">
+          <%= f.label :region, :class => "col-xs-offset-3 col-xs-3" %>
+          <%= f.text_field :region, :class => "col-xs-3" %>
         </div>
-        <div>
-          <%= f.label :district %>
-          <%= f.text_field :district %>
+        <div class="row">
+          <%= f.label :district, :class => "col-xs-offset-3 col-xs-3" %>
+          <%= f.text_field :district, :class => "col-xs-3" %>
         </div>
-        <div>
-          <%= f.label :contact_number %>
-          <%= f.number_field :contact_number %>
+        <div class="row">
+          <%= f.label :contact_number, :class => "col-xs-offset-3 col-xs-3" %>
+          <%= f.number_field :contact_number, :class => "col-xs-3" %>
         </div>
-        <div class="hide">
-          <%= f.label :default %>
+        <div class="row hide">
+          <%= f.label :default, :class => "col-xs-offset-3 col-xs-3" %>
           <%= f.check_box :default, checked: "checked"%>
         </div>
-        <div>
-          <%= f.submit "Submit" %>
+        <div class="row">
+          <%= f.submit "Submit", :class => "col-xs-offset-4 col-xs-4 btn btn-info" %>
         </div>
       <% end %>
     </div>
-    <div class=<% if @delivery_addresses.empty? %>'hide'<% else %>''<% end %> id="new-order-form-div">
+    <div class=<% if @delivery_addresses.empty? %>'col-xs-offset-2 col-xs-8 hide'<% else %>'col-xs-offset-2 col-xs-8'<% end %> id="new-order-form-div">
       <h1>How many boxes do you need?</h1>
-      <%= form_for @order, :url => orders_path, :html => {:id => "new-get-empty-order"}, :format => :json, :remote => true do |f| %>
-        <div>
-          <label for="initial_box_amount">Amount of Boxes</label>
-          <input type="number" name="amount" id="initial_box_amount">
+      <%= form_for @order, :url => orders_path, :html => {:id => "new-get-empty-order", :class => "col-xs-12"}, :format => :json, :remote => true  do |f| %>
+        <div class="row">
+          <label for="initial_box_amount" class="col-xs-offset-3 col-xs-3">Amount of Boxes</label>
+          <input type="number" name="amount" id="initial_box_amount" max="30" min="1" class="col-xs-3">
         </div>
-        <div>
-          <%= f.label :delivery_address_id %>
-          <%= f.select :delivery_address_id do %>
+        <div class="row">
+          <%= f.label :delivery_address_id, :class => "col-xs-offset-3 col-xs-3" %>
+          <%= f.select :delivery_address_id, [], {}, :class => "col-xs-3" do %>
             <% if @delivery_addresses.empty? != true %>
               <% @delivery_addresses.each do |address| %>
                 <% if address.default = 1 %>
@@ -63,24 +63,24 @@
             <% end %>
           <% end %>
         </div>
-        <div>
-          <%= f.label "At Date" %>
-          <%= f.date_field :date_when, min: Date.today %>
+        <div class="row">
+          <%= f.label "At Date", :class => "col-xs-offset-3 col-xs-3" %>
+          <%= f.date_field :date_when, min: Date.today, :class => "col-xs-3" %>
         </div>
-        <div>
-          <%= f.label "At Time" %>
-          <%= f.select :time_when_id do %>
+        <div class="row">
+          <%= f.label "At Time", :class => "col-xs-offset-3 col-xs-3" %>
+          <%= f.select :time_when_id, [], {}, {:class => "col-xs-3"} do %>
             <%= content_tag(:option, "Select Time", value: 0) %>)
             <% @time.each do |time| %>
               <%= content_tag(:option, time.time, value: time.id) %>
             <% end %>
           <% end %>
         </div>
-        <div class="hide">
+        <div class="row hide">
           <%= f.number_field :order_type_id, value: 1 %>
         </div>
-        <div>
-          <%= f.submit "Order", :class => "btn btn-success"%>
+        <div class="row">
+          <%= f.submit "Order", :class => "col-xs-offset-4 col-xs-4 btn btn-info"%>
         </div>
       <% end %>
     </div>

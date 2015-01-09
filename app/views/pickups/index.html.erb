@@ -3,13 +3,13 @@
   <%= render :partial => 'navbar/private_nav' %>
 
   <div id="section-1">
-    <h1 id="pickup-page-messages"></h1>
-    <div id="new-pickup-form-div">
+    <h1>Please Select a Date for Pickup</h1>
+    <div id="new-pickup-form-div" class="col-xs-offset-2 col-xs-8">
       <% if @have_boxes == true %>
-        <%= form_for @order, :url => pickups_path, :html => {:id => "new_pick_full_order"}, :format => :json, :remote => true do |f| %>
-          <div>
-            <%= f.label :delivery_address_id %>
-            <%= f.select :delivery_address_id do %>
+        <%= form_for @order, :url => pickups_path, :html => {:id => "new_pick_full_order", :class => "col-xs-12"}, :format => :json, :remote => true do |f| %>
+          <div class="row">
+            <%= f.label :delivery_address_id, :class => "col-xs-offset-3 col-xs-3" %>
+            <%= f.select :delivery_address_id, [], {}, {:class => "col-xs-3"} do %>
               <% if @delivery_addresses.empty? != true %>
                 <% @delivery_addresses.each do |address| %>
                   <% if address.default == 1 %>
@@ -21,24 +21,24 @@
               <% end %>
             <% end %>
           </div>
-          <div>
-            <%= f.label 'At Date' %>
-            <%= f.date_field :date_when, min: Date.today%>
+          <div class="row">
+            <%= f.label 'At Date', :class => "col-xs-offset-3 col-xs-3" %>
+            <%= f.date_field :date_when, min: Date.today, :class => "col-xs-3" %>
           </div>
-          <div>
-            <%= f.label 'At Time' %>
-            <%= f.select :time_when_id do %>
+          <div class="row">
+            <%= f.label 'At Time', :class => "col-xs-offset-3 col-xs-3" %>
+            <%= f.select :time_when_id, [], {}, {:class => "col-xs-3"} do %>
               <%= content_tag(:option, "Select Time", value: 0) %>)
               <% @time.each do |time| %>
                 <%= content_tag(:option, time.time, value: time.id) %>
               <% end %>
             <% end %>
           </div>
-          <div class="hide">
+          <div class="row hide">
             <%= f.number_field :order_type_id, value: 4 %>
           </div>
-          <div>
-            <%= f.submit "Order", :class => "btn btn-success"%>
+          <div class="row">
+            <%= f.submit "Order", :class => "col-xs-offset-4 col-xs-4 btn btn-info"%>
           </div>
         <% end %>
       <% else %>

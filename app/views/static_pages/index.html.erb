@@ -37,7 +37,7 @@
                 <a id="nav-faq" href="">FAQ</a>
               </li>
               <li>
-                <a id="nav-login" href="">Login</a>
+                <a id="nav-login" href="#">Login</a>
               </li>
               <li>
                 <button class="btn" id="nav-btn-gt">GET STARTED</button>
@@ -57,27 +57,31 @@
         <p>Simple storage from HK$49/month.
           <br>You click. We collect, store and deliver.</p>
       </div>
-      <div class="col-xs-12 sign-up-form">
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "sign_up_user"}, :format => :json, :remote => true ) do |f| %>
-          <%= devise_error_messages! %>
-          <div class="sign-up-input"><%= f.text_field :name, :placeholder => "Full Name" %></div>
-          <div class="sign-up-input"><%= f.email_field :email, :placeholder => "Email" %></div>
-          <div class="sign-up-input"><%= f.password_field :password, :placeholder => "Password", :value => 12345678%></div>
-          <div class="sign-up-input"><%= f.password_field :password_confirmation, :placeholder => "Confirm Password", :value => 12345678 %></div>
-          <div><%= f.submit "Sign up" %></div>
-        <% end %>
-      </div>
+      <div id="home-box-1-content">
+        <div class="col-xs-12 sign-up-form hide" id="sign-up-form-div">
+          <h1 class="home-box-1-font">Sign Up</h1>
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "sign_up_user"}, :format => :json, :remote => true ) do |f| %>
+            <%= devise_error_messages! %>
+            <div class="sign-up-input col-xs-offset-2 col-xs-8"><%= f.text_field :name, :placeholder => "Full Name", :class => "form-control" %></div>
+            <div class="sign-up-input col-xs-offset-2 col-xs-8"><%= f.email_field :email, :placeholder => "Email", :class => "form-control" %></div>
+            <div class="sign-up-input col-xs-offset-2 col-xs-8"><%= f.password_field :password, :placeholder => "Password, minimum 8 characters", :class => "form-control"%></div>
+            <div class="sign-up-input col-xs-offset-2 col-xs-8"><%= f.password_field :password_confirmation, :placeholder => "Confirm Password", :class => "form-control" %></div>
+            <div class="sign-up-input col-xs-offset-2 col-xs-8"><%= f.submit "Sign up", :class => "btn btn-warning" %></div>
+          <% end %>
+        </div>
 
-      <div class="col-xs-12 sign-in-form">
-        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name) , :html => {:id => "sign_in_user"}, :format => :json, :remote => true) do |f| %>
-          <%= devise_error_messages! %>
-          <div class="sign-in-input"><%= f.email_field :email, :placeholder => "Email" %></div>
-          <div class="sign-in-input"><%= f.password_field :password, :placeholder => "Password", :value => 12345678 %></div>
-          <div><%= f.submit "Sign in" %></div>
-        <% end %>
-      </div>
-      <div>
-        <button class="btn" id="pickup-btn">SCHEDULE FREE PICKUP</button>
+        <div class="col-xs-12 sign-in-form hide" id="sign-in-form-div">
+          <h1 class="home-box-1-font">Sign In</h1>
+          <%= form_for(resource, :as => resource_name, :url => session_path(resource_name) , :html => {:id => "sign_in_user"}, :format => :json, :remote => true) do |f| %>
+            <%= devise_error_messages! %>
+            <div class="sign-in-input col-xs-offset-2 col-xs-8"><%= f.email_field :email, :placeholder => "Email", :class => "form-control" %></div>
+            <div class="sign-in-input col-xs-offset-2 col-xs-8"><%= f.password_field :password, :placeholder => "Password", :class => "form-control" %></div>
+            <div class="sign-in-input col-xs-offset-2 col-xs-8"><%= f.submit "Sign In", :class => "btn btn-warning" %></div>
+          <% end %>
+        </div>
+        <div>
+          <button class="btn" id="pickup-btn">SCHEDULE FREE PICKUP</button>
+        </div>
       </div>
     </div>
     <!-- home-box-1 C -->

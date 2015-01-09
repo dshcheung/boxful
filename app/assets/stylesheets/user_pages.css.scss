@@ -16,5 +16,14 @@
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 #delivery-address-form-div label {
-  width: 110px;
+  text-align: left;
+}
+
+#home-table, #warehouse-table {
+  text-align: left;
+}
+
+#home-table img, #warehouse-table img{
+  height: 150px;
+  width: auto;
 }

@@ -1,20 +1,37 @@
 $(document).ready(function(){
   $(document).on("ajax:success", "#initial_delivery_address", function(e, data, status, xhr){
     if(data.success){
-      $('#order-page-messages').text('Successfully Created Address');
       $('#initial_delivery_address').trigger('reset');
       $('#initial-address-form-div').addClass('hide');
       $('#new-order-form-div').removeClass('hide');
       $('select#order_delivery_address_id').append('<option value="' + data.data.id + '">' +data.data.name + '</option>')
+      noty({
+        text: "Address Created",
+        animation: {
+            open: {height: 'toggle'}, // jQuery animate function property object
+            close: {height: 'toggle'}, // jQuery animate function property object
+            easing: 'swing', // easing
+            speed: 500 // opening & closing animation speed
+        }
+      });
     };
   });
   $(document).on("ajax:success", "#new-get-empty-order", function(e, data, status, xhr){
     if(data.success){
-      $('#order-page-messages').html('We Have Received Your Order<br>Redirecting In 10 Seconds');
+      $('#order-page-messages').html('We Have Received Your Order<br>Redirecting In 5 Seconds');
       $('#new-order-form-div').addClass('hide');
       setTimeout(function(){
         window.location.href = Routes.user_pages_path();
-      }, 10000);
+      }, 5000);
+      noty({
+        text: "We Have Received Your Order!",
+        animation: {
+            open: {height: 'toggle'}, // jQuery animate function property object
+            close: {height: 'toggle'}, // jQuery animate function property object
+            easing: 'swing', // easing
+            speed: 500 // opening & closing animation speed
+        }
+      });
     };
   })
 });

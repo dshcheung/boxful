@@ -1,9 +1,9 @@
 class BoxesController < ApplicationController
   def update
-    puts default_image_url
     box = Box.find(params[:id])
     if box.update(box_avatar_params)
-      render json: {data: box, success: true, status: 201}
+      # redirect_to :back
+      render json: {data: box, url: box.avatar.url(:small), success: true, status: 201}
     else
       render json: {data: box, success: false, eMessage: box.errors.messages}
     end

@@ -1,7 +1,15 @@
 $(document).ready(function(){
   $(document).on('ajax:success', '.order-status-form', function(e, data, status, xhr){
     if (data.success){
-      console.log('success12');
+      noty({
+        text: "Status Updated",
+        animation: {
+            open: {height: 'toggle'}, // jQuery animate function property object
+            close: {height: 'toggle'}, // jQuery animate function property object
+            easing: 'swing', // easing
+            speed: 500 // opening & closing animation speed
+        }
+      });
     }
   });
 });

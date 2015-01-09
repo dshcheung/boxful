@@ -9,7 +9,7 @@ class Box < ActiveRecord::Base
   has_attached_file :avatar, 
     :storage => :s3, 
     :s3_credentials => Proc.new{|a| a.instance.s3_credentials }, 
-    :styles => { :medium => "300x300>", :thumb => "100x100>", :icon => "25x25>" }, 
+    :styles => { :medium => "300x300>", :small => "150x150>", :thumb => "100x100>", :icon => "25x25>" }, 
     :default_url => "http://s3.amazonaws.com/boxful-admin/image/boximg2.png"
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/

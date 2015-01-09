@@ -1,10 +1,13 @@
 $(document).ready(function(){
   $(document).on('ajax:success', '#new_delivery_address', function(e, data, status, xhr){
-    console.log(e)
-    console.log(data);
     if(data.success){
       $('#new_delivery_address').trigger('reset');
       $('#delivery-address-table table thead').append('<tr><td>'+ data.data.name + '</td>' + '<td>' + data.data.address1 + ', ' + data.data.address2 + ', ' + data.data.region + ', ' + data.data.district + '</td></tr>');
     }
   });
+  $(document).on('ajax:success', '.box-image-upload', function(e, data, status, xhr){
+    console.log("success");
+    // if(data.success){
+    // }
+  })
 });
