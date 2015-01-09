@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :pickups, only: [:index, :create]
 
+  resources :retrieves, only: [:index, :create]
+
   resources :boxes, only: [:update]
 
 end

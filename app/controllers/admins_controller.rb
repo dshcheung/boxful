@@ -10,20 +10,23 @@ class AdminsController < ApplicationController
   end
 
   def change_status
+    order = Order.find(params[:order_id])
     if params[:all].to_i == 1
-      Order.find(params[:order_id]).boxes.each do |box|
-        Box.find(box.id).histories.create(location_type_id: 1, delivery_address_id: Order.find(params[:order_id]).delivery_address.id)
+      order.boxes.each do |box|
+        Box.find(box.id).histories.create(location_type_id: 1, delivery_address_id: order.delivery_address.id)
       end
+      order.destroy
       render json: {success: true}
     elsif params[:all].to_i == 2
-      Order.find(params[:order_id]).boxes.each do |box|
+      order.boxes.each do |box|
         Box.find(box.id).histories.create(location_type_id: 2)
       end
       render json: {success: true}
     elsif params[:all].to_i == 3
-      Order.find(params[:order_id]).boxes.each do |box|
+      order.boxes.each do |box|
         Box.find(box.id).histories.create(location_type_id: 3)
       end
+      order.destroy
       render json: {success: true}
     end
   end
