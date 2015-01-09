@@ -5,9 +5,22 @@ $(document).ready(function(){
       $('#delivery-address-table table thead').append('<tr><td>'+ data.data.name + '</td>' + '<td>' + data.data.address1 + ', ' + data.data.address2 + ', ' + data.data.region + ', ' + data.data.district + '</td></tr>');
     }
   });
-  $(document).on('ajax:success', '.box-image-upload', function(e, data, status, xhr){
-    console.log("success");
-    // if(data.success){
-    // }
+  $(document).on("click", ".box-image-upload", function(e, data, status, xhr){
+    tempURL = $(this).children("div.box-image-div").children("input").val();
+  });
+  $(document).on("submit", ".box-image-upload", function(e, data, status, xhr){
+    if (tempURL == "") {
+      noty({
+        text: "Please Select a File to Upload",
+        animation: {
+            open: {height: 'toggle'}, // jQuery animate function property object
+            close: {height: 'toggle'}, // jQuery animate function property object
+            easing: 'swing', // easing
+            speed: 500 // opening & closing animation speed
+        }
+      });
+    } else {
+      $(this).children("div").children("input.btn").prop("disabled", true)
+    }
   })
 });

@@ -38,13 +38,12 @@
           <% @boxes.each do |box| %>
             <% if box.histories.last.location_type_id == 1 %>
               <tr>
-                <td><%= image_tag box.avatar.url(:small) %></td>
+                <td><%= image_tag box.avatar.url(:small), :id => "box-image-" + box.id.to_s%></td>
                 <td><%= box.id %></td>
                 <td>
-                  <%= form_for box, :url => box_path(box), :html => {:class => "box-image-upload"}, :method => "patch", :format => :json, :remote => true do |f| %>
-                    <div><%= f.file_field :avatar %></div>
-                    <div class="hide"><%= text_field_tag 'authenticity_token', :value => form_authenticity_token %></div>
-                    <div><%= f.submit 'upload', :class => "btn btn-info" %></div>
+                  <%= form_for box, :authenticity_token => true, :html => { :multipart => true, :class => "box-image-upload" }, :remote => true do |f| %>
+                    <div class="box-image-div"><%= f.file_field :avatar, :id => "box-image-field-" + box.id.to_s %></div>
+                    <div><%= f.submit 'upload', :id => "box-image-upload-" + box.id.to_s,:class => "btn btn-info" %></div>
                   <% end %>
                 </td>
               </tr>
@@ -68,7 +67,7 @@
                 <td><%= image_tag box.avatar.url(:small) %></td>
                 <td><%= box.id %></td>
                 <td>
-                  <%= form_for box, :url => box_path(box) , :html => {:class => "box-image-upload"}, :method => "patch", :format => :json, :remote => true do |f| %>
+                  <%= form_for box, :authenticity_token => true, :html => { :multipart => true, :class => "box-image-upload" }, :remote => true do |f| %>
                     <div><%= f.file_field :avatar %></div>
                     <div><%= f.submit 'upload', :class => "btn btn-info" %></div>
                   <% end %>

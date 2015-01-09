@@ -44,6 +44,9 @@ gem 'aws-sdk', '~> 1.5.7'
 #env file protection gem
 gem 'dotenv-rails', :groups => [:development, :test]
 
+#remote upload file
+gem 'remotipart', '~> 1.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
